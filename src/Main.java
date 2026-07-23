@@ -34,10 +34,11 @@ public class Main {
                 }
                 case 2 -> {
 
-                    //
+                    //efetiva o saque
                     System.out.println("Quantidade de saque: ");
                     int saque = in.nextInt();
 
+                    // verifica se o valor é válido
                     if (saque <= 0) {
                         System.out.println("Valor invalido! ");
                         break;
@@ -45,6 +46,8 @@ public class Main {
                         System.out.println("O valor deve ser múltiplo de 10! ");
                         break;
                     }
+
+                    // verifica a quantidade de notas a serem usadas considerando as notas restantes
                     int rest = saque;
                     int use100 = Math.min(rest / 100, n100);
                     rest -= use100 * 100;
@@ -55,6 +58,7 @@ public class Main {
                     int use10 = Math.min(rest / 10, n10);
                     rest -= use10 * 10;
 
+                    //garante que as notas só sejam retiradas do estoque quando o saque for concluído com sucesso.
                     if (rest == 0) {
                         n100 -= use100;
                         n50 -= use50;
@@ -62,6 +66,7 @@ public class Main {
                         n10 -= use10;
                         System.out.println("\nSaque realizado com sucesso!");
                         System.out.println("Notas entregues: ");
+                        //imprime a quantidade de notas usadas de cada valor.
                         if (use100 > 0)
                             System.out.println("Notas de 100: " + use100);
                         if (use50 > 0)
@@ -76,11 +81,11 @@ public class Main {
                 }
                 case 3 -> {
                     System.out.println("Encerrando o sistema...");
-                    break;
 
                 }
             }
         }
+        //verifica se deve ou não retornar o loop ao inicio.
         while (opcao != 3) ;
         in.close();
     }
